@@ -41,6 +41,13 @@ show1()
 	plots $X $Y ':'
 }
 
+setcolour()
+{
+	C=$1
+
+	tput setaf $C bold
+}
+
 pause()
 {
 	sleep ${DELAY}
@@ -65,4 +72,9 @@ trap 'tput cup ${SIZE} 0 ; tput sgr0 ; exit 1' 1 2 3 6
 
 tput init
 
-display ${SIZE}
+for X in `seq 1 7` ; do
+	setcolour $X
+	display ${SIZE}
+done
+
+tput sgr0
